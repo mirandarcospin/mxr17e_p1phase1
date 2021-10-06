@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in</title>
+    <link href="css/mystyle.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 style="color: white; font-size: 50px;">Welcome!</h1>
+    <form id="signUn">
+      <h2>Sign-Up</h2>
+      <h2>Create your account</h2>
+      <div class="form-control">
+        <label for="name" id="label-name">Personal Information</label>
+        <!-- Input for Full Name -->
+        <input type="text"
+          id="fn"
+          placeholder="First Name" />
+        <input type="text"
+          id="ln"
+          placeholder="Last Name" />
+      </div>
+      <div class="form-control">
+        <label for="name" id="label-name">Username</label>
+        <!-- Input for Username -->
+        <input type="text"
+          id="username"
+          placeholder="Userame" />
+        <input type="text"
+          id="email"
+          placeholder="Email address" />
+      </div>
+      <div class="form-control">
+        <label for="name" id="label-name">Password</label>
+        <!-- Input for Password -->
+        <input type="password"
+          id="pass"
+          placeholder="Password" />
+        <input type="password"
+          id="passConf"
+          placeholder="Confirm" oninput="validatePass()"/>
+      </div>
+      <script>
+        function validatePass() {
+          var p = document.getElementById("pass").value;
+          var pc = document.getElementById("passConf").value;
+          if(p == pc) {
+            document.getElementById("pass").style.borderColor = "green";
+            document.getElementById("passConf").style.borderColor = "green";
+          }
+          else {
+            document.getElementById("passConf").style.borderColor = "red";
+          }
+        }
+      </script>
+      <div class="form-control">
+        <label>This account is for...</label>
+        <select name="accountType" id="accountType-select">
+          <option style="color:gray" value="null">--Select--</option>
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <input type="button" style="color:#8d42f5;font-family: Arial;" onclick="window.location.href='../index.html';" value="Back"></input>
+      <input id="next" type="button" style="background-color:#8d42f5;color:white;font-family: Arial;" onclick="account()" value="Next"></input>
+      <script>
+        function account() {
+          var fn1 = document.getElementById("fn").value;
+          var ln1 = document.getElementById("ln").value;
+          var u = document.getElementById("username").value;
+          var e = document.getElementById("email").value;
+          var p = document.getElementById("pass").value;
+          var pc = document.getElementById("passConf").value;
+          if(fn1 != '' && ln1 != '' && u != '' && e != '' && p != '' && pc != '')
+          {
+            var emailReg = /[@]/;
+            if (!(e.match(emailReg))) {
+              document.getElementById("next").innerHTML = alert("Invalid email address.");
+            }
+            var at = document.getElementById("accountType-select");
+            var selectedValue = at.options[at.selectedIndex].value;
+            if (selectedValue == "user")
+            {
+              document.getElementById("next").setAttribute("onclick", "window.location.href='logUser.html';");
+            }
+            else if (selectedValue == "admin")
+            {
+              document.getElementById("next").setAttribute("onclick", "window.location.href='logAdmin.html';");
+            }
+            else {
+              document.getElementById("next").innerHTML = alert("Please select type of account");
+            }
+          }
+          else {
+            document.getElementById("next").innerHTML = alert("All fields are required.");
+          }
+        }
+      </script>
+    </form>
+  </body>
+</html>

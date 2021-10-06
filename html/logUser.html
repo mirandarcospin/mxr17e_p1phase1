@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <link href="css/mystyle.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 style="color: white; font-size: 50px;">Welcome Back!</h1>
+    <form id="logIn-Admin">
+      <h2>Log-In</h2>
+      <h2>Use your User Account</h2>
+      <div class="form-control">
+        <!-- Input to log in -->
+        <input type="text"
+          id="email"
+          placeholder="Email address" />
+        <br>
+        <input type="password"
+          id="pass"
+          placeholder="Password" oninput="validatePass()"/>
+      </div>
+      <script>
+        function validatePass() {
+          var p = document.getElementById("pass");
+          if(p.value.length > 5) {
+            p.style.border = "thick solid green";
+          }
+          else {
+            p.style.border = "thick solid red";
+          }
+        }
+      </script>
+      <input type="button" style="background-color:#8d42f5;color:white;font-family: Arial;" onclick="window.location.href='../index.html';" value="Back"></input>
+      <input type="button" style="color:#8d42f5;font-family: Arial;" onclick="window.location.href='signUp.html';" value="Create account"></input>
+      <input id="next" type="button" style="background-color:#8d42f5;color:white;font-family: Arial;" onclick="validate()" value="Next"></input>
+      <script>
+        function validate(){
+          var email = document.getElementById("email").value;
+          var password = document.getElementById("pass").value;
+          var emailReg = /[@]/;
+          if(email != '' && password != ''){
+            if (email.match(emailReg)) {
+              document.getElementById("next").setAttribute("onclick", "window.location.href='mainUser.html';");
+            }
+            else {
+              document.getElementById("next").innerHTML = alert("Invalid email address.");
+            }
+          }
+          else {
+            document.getElementById("next").innerHTML = alert("Email and Password are required.");
+          }
+        }
+      </script>
+    </form>
+  </body>
+</html>

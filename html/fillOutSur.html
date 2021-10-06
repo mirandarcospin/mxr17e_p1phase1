@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <link href="css/mystyle.css" rel="stylesheet" />
+    <script>
+      function getRandomInt(max) { //For random numbers
+        return Math.floor(Math.random() * max);
+      }
+      function moreSurveys(tableID) { //For user to view more surveys to fill out
+        //Adding rows with fake data in each cell
+        // title, description, date, submitted_by, approved_by, view
+        var table = document.getElementById(tableID);
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+        var title = row.insertCell(0);
+        title.innerHTML = 'Survey ' + getRandomInt(20);
+
+        var description = row.insertCell(1);
+        description.innerHTML = 'Description survey ' + rowCount;
+
+        var date = row.insertCell(2);
+        date.innerHTML = (getRandomInt(12) + '/' + getRandomInt(28) + '/2021');
+
+        var sb = row.insertCell(3);
+        sb.innerHTML = 'User ' + getRandomInt(15);
+
+        var ab = row.insertCell(4);
+        ab.innerHTML = 'Admin ' + getRandomInt(15);
+
+        var v = row.insertCell(5);
+        var view = document.createElement("input");
+        view.type = "button";
+        view.name = "viewButton";
+        view.value = "Fill Out";
+        v.appendChild(view);
+      }
+    </script>
+  </head>
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <!-- Every Survey title has: title, description, date, submitted_by, approved_by
+    Users must be able to submit new surveys for review. -->
+    <div class="sidenav">
+      <a href="javascript:history.back()">My Surveys</a>
+      <a href="#">To Fill Out!</a>
+      <a href="#">Settings</a>
+      <a href="../index.html">Log-Out</a>
+    </div>
+    <div class="content">
+      <h1 style="color: #8d42f5;font-size: 50px;">Survey Forms</h1>
+    </div>
+    <div class="content">
+      <br>
+      <h2>Fill Out Any Survey!</h2>
+      <br>
+      <table id="allSurveys">
+        <tr> <!-- title, description, date, submitted_by, approved_by, view -->
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Submitted By</th>
+          <th>Approved By</th>
+          <th>View</th>
+        </tr>
+        <tr> <!-- Fake Data -->
+          <td>Survey 1</td>
+          <td>Description survey 1</td>
+          <td>10/01/2021</td>
+          <td>User 1</td>
+          <td>Admin 1</td>
+          <td><input type="button" name="viewButton" value="Fill Out"/></td>
+        </tr>
+        <tr>
+          <td>Survey 2</td>
+          <td>Description survey 2</td>
+          <td>10/02/2021</td>
+          <td>User 2</td>
+          <td>Admin 2</td>
+          <td><input type="button" name="viewButton" value="Fill Out"/></td>
+        </tr>
+        <tr>
+          <td>Survey 3</td>
+          <td>Description survey 3</td>
+          <td>10/03/2021</td>
+          <td>User 3</td>
+          <td>Admin 3</td>
+          <td><input type="button" name="viewButton" value="Fill Out"/></td>
+        </tr>
+      </table>
+      <br> <!-- To view more surveys -->
+      <input type="button" value="View More" onclick="moreSurveys('allSurveys')" style="background-color:#8d42f5;color:white;"/>
+    </div>
+  </body>
+</html>

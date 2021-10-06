@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link href="css/mystyle.css" rel="stylesheet" />
+    <script>
+      function getRandomInt(max) { //For random numbers
+        return Math.floor(Math.random() * max);
+      }
+      function addRow(tableID) {
+        //Adding rows with fake data in each cell
+        var table = document.getElementById(tableID);
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+        var cell1 = row.insertCell(0);
+  			var element1 = document.createElement("input");
+  			element1.type = "checkbox";
+  			element1.name="cb";
+  			cell1.appendChild(element1);
+
+        var title = row.insertCell(1);
+        title.innerHTML = 'Survey ' + rowCount;
+
+        var description = row.insertCell(2);
+        description.innerHTML = 'Description survey ' + rowCount;
+
+        var date = row.insertCell(3);
+        date.innerHTML = (getRandomInt(12) + '/' + getRandomInt(28) + '/2021');
+
+        var sb = row.insertCell(4);
+        sb.innerHTML = 'Admin 1';
+
+        var v = row.insertCell(5);
+        var view = document.createElement("input");
+        view.type = "button";
+        view.name = "viewButton";
+        view.value = "View";
+        v.appendChild(view);
+
+        var e = row.insertCell(6);
+        var edit = document.createElement("input");
+        edit.type = "button";
+        edit.name = "editButton";
+        edit.value = "Edit";
+        e.appendChild(edit);
+      }
+      function deleteRow(tableID) { //Deleting rows with their info
+        try {
+          var table = document.getElementById(tableID);
+          var rowCount = table.rows.length;
+
+          for(var i=0; i<rowCount; i++) {
+            var row = table.rows[i];
+            var chkbox = row.cells[0].childNodes[0];
+            if(null != chkbox && true == chkbox.checked) {
+              table.deleteRow(i);
+              rowCount--;
+              i--;
+            }
+          }
+        }catch(e) {
+            alert(e);
+        }
+      }
+    </script>
+  </head>
+  <style>
+    body { /* For background to be white */
+      background-color: white;
+      font-family: Arial;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <!-- An admin can view surveys as well as create them.
+    Admins must approve a survey before it's front-page visible -->
+    <div class="sidenav">
+      <a href="#">My Surveys</a>
+      <a href="fillOutSur.html">To Fill Out!</a>
+      <a href="#">Settings</a>
+      <a href="../index.html">Log-Out</a>
+    </div>
+    <div class="content">
+      <h1 style="color: #8d42f5;font-size: 50px;">Survey Forms</h1>
+    </div>
+    <div class="content">
+      <br>
+      <h2>Your Surveys</h2>
+      <table id="yourTable">
+        <tr> <!-- to_delete, title, description, date, submitted_by, view, edit -->
+          <th>Select</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Submitted By</th>
+          <th>To View</th>
+          <th>To Edit</th>
+        </tr>
+        <tr> <!-- Fake Data -->
+          <td><input type="checkbox" name="cb"/></td>
+          <td>Survey 1</td>
+          <td>Description survey 1</td>
+          <td>10/06/2021</td>
+          <td>Admin 1</td>
+          <td><input type="button" name="viewButton" value="View"/></td>
+          <td><input type="button" name="editButton" value="Edit"/></td>
+        </tr>
+      </table>
+      <br> <!-- To either create new survey or delete selected surveys -->
+      <input type="button" value="Delete Survey(s)" onclick="deleteRow('yourTable')" style="color:#8d42f5;float:left;"/>
+      <input type="button" value="Create New Survey" onclick="addRow('yourTable')" style="background-color:#8d42f5;color:white;float:right;"/>
+    </div>
+    <div class="content">
+      <br><br>
+      <h2>Surveys for Revision</h2>
+      <table id="allSurveys">
+        <tr> <!-- approve, title, description, date, submitted_by, status, view -->
+          <th>Approve</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Submitted By</th>
+          <th>Status</th>
+          <th>To View</th>
+        </tr>
+        <tr> <!-- Fake Data -->
+          <td><input type="checkbox" name="cb"/></td>
+          <td>Survey 1</td>
+          <td>Description survey 1</td>
+          <td>10/01/2021</td>
+          <td>User 1</td>
+          <td>
+            <select name="status" id="status-select">
+              <option style="color:gray" value="null">--Select Status--</option>
+              <option value="approve">Approved</option>
+              <option value="inProcess">In process</option>
+              <option value="denied">Denied</option>
+            </select>
+          </td>
+          <td><input type="button" name="viewButton" value="View"/></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="cb"/></td>
+          <td>Survey 2</td>
+          <td>Description survey 2</td>
+          <td>10/02/2021</td>
+          <td>User 2</td>
+          <td>
+            <select name="status" id="status-select">
+              <option style="color:gray" value="null">--Select Status--</option>
+              <option value="approve">Approved</option>
+              <option value="inProcess">In process</option>
+              <option value="denied">Denied</option>
+            </select>
+          </td>
+          <td><input type="button" name="viewButton" value="View"/></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="cb"/></td>
+          <td>Survey 3</td>
+          <td>Description survey 3</td>
+          <td>10/03/2021</td>
+          <td>User 3</td>
+          <td>
+            <select name="status" id="status-select">
+              <option style="color:gray" value="null">--Select Status--</option>
+              <option value="approve">Approved</option>
+              <option value="inProcess">In process</option>
+              <option value="denied">Denied</option>
+            </select>
+          </td>
+          <td><input type="button" name="viewButton" value="View"/></td>
+        </tr>
+      </table>
+      <br> <!-- To approve the selected surveys -->
+      <input type="button" value="Approve Survey(s)" onclick="deleteRow('allSurveys')" style="background-color:#8d42f5;color:white;"/>
+    </div>
+  </body>
+</html>
