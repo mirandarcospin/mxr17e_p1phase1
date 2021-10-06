@@ -1,0 +1,107 @@
+/* Body element (Color,Font, Alignment) */
+body {
+  background-color: #8d42f5;
+  font-family: Arial;
+  text-align: center;
+}
+/* Form (Color, Padding, Shadow) */
+form {
+  background-color: #fff;
+  max-width: 550px;
+  margin: 50px auto;
+  padding: 30px 20px;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+}
+/* Styling Title/Class */
+.form-control {
+  text-align: left;
+  margin-bottom: 30px;
+}
+/* Styling Label */
+.form-control label {
+  display: block;
+  margin-bottom: 10px;
+}
+/* Form-control (input,select, textarea) */
+.form-control input,
+.form-control select,
+.form-control textarea {
+  border: 1px solid #777;
+  border-radius: 2px;
+  font-family: Arial;
+  padding: 10px;
+  display: block;
+  width: 95%;
+}
+/* Radio button and Checkbox */
+.form-control input[type="radio"],
+.form-control input[type="checkbox"] {
+  display: inline-block;
+  width: auto;
+}
+/* Styling submit button */
+button {
+  background-color: #873af2;
+  border: 1px solid #777;
+  border-radius: 5px;
+  color: white;
+  font-family: Arial;
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+{
+  box-sizing: border-box;
+}
+
+/* Style the side navigation */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #8d42f5;
+  overflow-x: hidden;
+}
+
+
+/* Side navigation links */
+.sidenav a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color on hover */
+.sidenav a:hover {
+  background-color: #d6cece;
+  color: black;
+}
+
+/* Style the content */
+.content {
+  margin-left: 200px;
+  padding-left: 20px;
+}
+
+table {
+  font-family: arial;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(1) {
+  background-color: #dddddd;
+}
