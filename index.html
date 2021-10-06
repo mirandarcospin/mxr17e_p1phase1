@@ -1,0 +1,46 @@
+<!-- Log-in as admin or user -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Generator</title>
+    <link href="html/css/mystyle.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 style="color: white; font-size: 50px;">Welcome</h1>
+    <h1 style="color: white; font-size: 50px;">To Your Survey Form</h1>
+    <h4 style="color: white">IT 325 - Miranda Ramirez Cospin</h4>
+    <form id="logIn">
+      <h2>Select type of account</h2>
+      <div class="form-control">
+        <select name="accountType" id="accountType-select">
+          <option style="color:gray" value="null">--Select--</option>
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <input type="button" style="color:#8d42f5;font-family: Arial;" onclick="window.location.href='html/signUp.html';" value="Create account"></input>
+      <input id="next" type="button" style="background-color:#8d42f5;color:white;font-family: Arial;" onclick="account()" value="Next"></input>
+      <script>
+      // Shows the form (question) that the user created
+        function account() {
+          var at = document.getElementById("accountType-select");
+          var selectedValue = at.options[at.selectedIndex].value;
+          if (selectedValue == "user")
+          {
+            document.getElementById("next").setAttribute("onclick", "window.location.href='html/logUser.html';");
+          }
+          else if (selectedValue == "admin")
+          {
+            document.getElementById("next").setAttribute("onclick", "window.location.href='html/logAdmin.html';");
+          }
+          else {
+            document.getElementById("next").innerHTML = alert("Please select type of account");
+          }
+        }
+      </script>
+    </form>
+  </body>
+</html>
